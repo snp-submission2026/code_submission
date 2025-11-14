@@ -178,7 +178,7 @@ for epoch in range(1, num_epochs + 1):
         best_macro_f1 = macro_f1
         best_state = model.state_dict()
         patience_counter = 0
-        torch.save(best_state, "models/best_model.hateexp.pt")
+        torch.save(best_state, "models/best_model.pt")
         print("✓ Saved new best model checkpoint")
     else:
         patience_counter += 1
@@ -207,14 +207,3 @@ print("\nFinal Classification Report:")
 print(classification_report(all_labels, all_preds, target_names=list(le_label.classes_)))
 print("\nConfusion Matrix:")
 print(confusion_matrix(all_labels, all_preds))
-
-# output_json = {
-#     "train_loss": train_loss_arr,
-#     "val_loss": val_loss_arr,
-#     "val_accuracy": val_acc_arr,
-#     "macro_f1": macro_f1_arr,
-#     "gate_weights": gate_weight_arr
-# }
-
-# with open(RESULT_PATH / "all_matrix.json", "w") as f:
-#     json.dump(output_json, f, indent=4)
